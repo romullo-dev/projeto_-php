@@ -26,8 +26,4 @@ echo 'Batata Frita '.$batata."<br>";
 echo 'X-Tudo '.$x."<br>";
 echo 'Refrigerante Lata ' .$refri."<br>";
 
-
-
-
-
 ?>

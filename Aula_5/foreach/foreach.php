@@ -10,7 +10,7 @@ unset($frutas["1"]);
 var_dump($frutas);
 
 //DIE
-die("Aqui acaba...");
+//die("Aqui acaba...");
 
 //FORMA TRADICIONAL
 echo"COM FOR <BR>";
