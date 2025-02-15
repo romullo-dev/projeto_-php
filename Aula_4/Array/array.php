@@ -18,5 +18,9 @@ print("<br>");
 //REMOVER UM ELEMENTO
 $frutas = array_diff($frutas, [3]);
 
-var_dump($frutas);
+//var_dump($frutas);
+
+//VERIFICA SE TEM UM ELEMENTO
+print in_array("Abacate", $frutas);
+
 ?>
