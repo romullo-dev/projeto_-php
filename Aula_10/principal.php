@@ -1,3 +1,18 @@
+<?php 
+session_start();
+
+//incluir objeto na instancia]
+
+include_once("LoginClass.php");
+
+$acessar = new LoginClass();
+
+$acessar->controlarSessao();
+
+
+
+?>
+
 <!doctype html>
 <html lang="pt-br">
 
@@ -41,7 +56,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            User
+                            <?php echo strtoupper($_SESSION ['login'])  ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Alter pass</a></li>
