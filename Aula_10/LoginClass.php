@@ -1,6 +1,4 @@
 <?php
-
-// Classe Login
 class LoginClass
 {
     // Atributos
@@ -47,7 +45,7 @@ class LoginClass
 
     public function controlarSessao()
     {
-        //verificar ser tem sessã ativa
+        //verificar ser tem sessão ativa
         if (!isset($_SESSION['login'])) {
             $_SESSION ['erro'] ="Efetuar login";
             $_SESSION ['erro'] = true ;
