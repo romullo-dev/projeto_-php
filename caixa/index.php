@@ -1,6 +1,28 @@
+<?php
+session_start();
+include_once("operacao.php");
+
+$operaDepositar = new Operacao();
+
+if (isset($_POST["valor"]) && isset($_POST["acao"])) {
+    $valor = $_POST["valor"];
+    $acao = $_POST["acao"];
+
+    switch ($acao) {
+        case "Depositar":
+            $operaDepositar->Depositar($valor);
+            break;
+        case "Sacar":
+            $operaDepositar -> sacar ($valor);
+            break;
+        case "Pagar":
+            $operaDepositar -> pagar($valor);
+            break;
+    }
+} 
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,16 +76,15 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container mt-5">
         <h1 class="text-center mb-4">Banco Simples</h1>
         <div class="card p-4">
-            <h3 class="text-center mb-4">Saldo: R$ <span id="saldo">0.00</span></h3>
-            <form action="operacao.php" method="post">
+            <h3 class="text-center mb-4">Saldo: R$ <span id="saldo"><?= isset($_SESSION['saldo']) ? $_SESSION['saldo'] : '0.00' ?></span></h3>
+            <form action="index.php" method="post">
                 <div class="mb-3">
                     <label for="valor" class="form-label">Valor</label>
-                    <input type="number" class="form-control" id="valor" placeholder="Digite o valor" name="valor">
+                    <input type="number" class="form-control" id="valor" placeholder="Digite o valor" name="valor" required>
                 </div>
                 <input type="hidden" name="acao" id="acao" value="">
                 <div class="d-grid gap-2">
@@ -75,5 +96,4 @@
         </div>
     </div>
 </body>
-
 </html>
