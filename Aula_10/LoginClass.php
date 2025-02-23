@@ -26,6 +26,7 @@ class LoginClass
     {
         $this->setLogin($login);
         $this->setSenha($senha);
+        
 
         // Verificação do login e senha
         if ($this->getLogin() == 'maria' && $this->getSenha() == '123456') {

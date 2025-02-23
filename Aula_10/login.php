@@ -1,6 +1,6 @@
 <?php
 
-//iniciaer sessao
+//iniciar sessao
 session_start();
 //incluindo a classe
 include_once("LoginClass.php");
