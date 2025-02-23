@@ -4,28 +4,23 @@ class LoginClass
     // Atributos
     private $login = null;
     private $senha = null;
-
     // Getters e Setters
     public function setLogin($login)
     {
         $this->login = $login;
     }
-
     public function getLogin()
     {
         return $this->login;
     }
-
     public function setSenha($senha)
     {
         $this->senha = $senha;  
     }
-
     public function getSenha()
     {
         return $this->senha;
     }
-
     // Método de Login
     public function efetuarLogin($login, $senha)
     {
