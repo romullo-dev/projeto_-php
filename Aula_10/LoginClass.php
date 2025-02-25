@@ -1,4 +1,5 @@
 <?php
+session_start();
 class LoginClass
 {
     // Atributos
@@ -35,7 +36,9 @@ class LoginClass
             exit(); 
         } else {
             // Se o login 
-            echo "Login ou senha incorretos!";
+            $_SESSION ['mensagem'] ="Login ou senha incorreto";
+            $_SESSION ['mostrar_mensagem'] = true ;
+            header('location: index.php');
         }
     }
 
@@ -43,9 +46,8 @@ class LoginClass
     {
         //verificar ser tem sessão ativa
         if (!isset($_SESSION['login'])) {
-            $_SESSION ['erro'] ="Efetuar login";
-            $_SESSION ['erro'] = true ;
-
+            $_SESSION ['mensagem'] ="Efetuar login";
+            $_SESSION ['mostrar_mensagem'] = true ;
             header('location: index.php');
         }
 }
