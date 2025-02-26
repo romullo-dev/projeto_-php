@@ -71,36 +71,121 @@ $acessar->controlarSessao();
     <br><br>
 
     <div class="container-fluid">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nome</label>
-            <input type="text" class="form-control" name="nome_cliente" id="exampleFormControlInput1"
-                placeholder="Digite o seu nome">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" name="email_cliente" id="exampleFormControlInput1"
-                placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
-            <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-
-        <div class="mb-3">
-        <label for="estados">Estados</label>
-        <select class="form-select" name="estado_cliente" aria-label="Default select example">
-            <option value="DF">DF</option>
-            <option value="GO">GO</option>
-            <option value="MT">MT</option>
-            <option value="TO">TO</option>
-        </select>
-        </div>
-
-        <br><br>
+        <br>
+        <form action="cliente.php" method="post">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="nome_cliente" class="form-label">Nome</label>
+                        <input type="text" class="form-control" name="nome_cliente" id="nome_cliente"
+                            placeholder="Digite o seu nome">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="dataNasc_cliente" class="form-label">Data Nascimento</label>
+                        <input type="date" class="form-control" name="dataNasc_cliente" id="dataNasc_cliente">
+                    </div>
+                </div>
+            </div>
 
 
-        <button type="button" class="btn btn-warning">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="email_cliente" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email_cliente" id="email_cliente"
+                            placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3">
+                        <label for="cpf_cliente" class="form-label">CPF</label>
+                        <input type="text" class="form-control" name="cpf_cliente" id="cpf_cliente"
+                            placeholder="000.000.000-00" maxlength="11">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="estados">Estados</label>
+                        <select class="form-select" name="estado_cliente" aria-label="Default select example">
+                            <option value="DF">DF</option>
+                            <option value="GO">GO</option>
+                            <option value="MT">MT</option>
+                            <option value="TO">TO</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição</label>
+                        <textarea class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+
+            </div>
+
+            <button type="reset" class="btn btn-warning">Cancelar</button>
+            <button type="submit" name="salvar" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="mensagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning" role="alert">
+                        <?php print $_SESSION['mensagem'] ?>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <?php
+    if ($_SESSION["mostrar_mensagem"] == "SIM") { 
+        $_SESSION ['mostrar_mensagem'] = 'NAO'?>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var myModal = new bootstrap.Modal(document.getElementById('mensagem'));
+                myModal.show();
+            });
+        </script>
+    <?php } else {
+        $_SESSION["mostrar_mensagem"] = "NAO";
+    }
+    ?>
+
+
+
+    <br><br>
 
 
     </div>
