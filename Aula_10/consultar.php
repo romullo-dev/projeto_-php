@@ -82,44 +82,80 @@ $acessar->controlarSessao();
                     </div>
                 </div>
                 <div class="col-3">
-                <div class="mb-3">
+                    <div class="mb-3">
                         <label for="cpf_cliente" class="form-label">CPF</label>
                         <input type="text" class="form-control" name="cpf_cliente" id="cpf_cliente"
                             placeholder="000.000.000-00" maxlength="11">
                     </div>
                 </div>
 
-                
+
             </div>
 
-            <button type="submit" name="consultar" class="btn btn-primary"><i class="bi bi-search"></i> Consultar</button>
+            <button type="submit" name="consultar" class="btn btn-primary"><i class="bi bi-search"></i>
+                Consultar</button>
         </form>
         <br>
         <hr>
-        <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">CPF</th>
-      <th scope="col">Email</th>
-      <th scope="col">Data de Nascimento</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">MAria</th>
-      <td>12345678956</td>
-      <td>ass@mdo</td>
-      <td>15/02/2000</td>
-    </tr>
-    <tr>
-      <th scope="row">Jacob</th>
-      <td>125454454551</td>
-      <td>@fat</td>
-      <td>15/02/2000</td>
-    </tr>
-  </tbody>
-</table>
+        <?php
+        if (isset($_SESSION['resultado'])) {
+
+            ?>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Data de Nascimento</th>
+                        <th scope="col">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach ($_SESSION['resultado'] as $key => $valor) {
+                        echo "<tr>";
+                        echo "<td>{$valor['nome']}</td>";
+                        echo "<td>{$valor['cpf']}</td>";
+                        echo "<td>{$valor['email']}</td>";
+                        echo "<td>{$valor['data_nasc']}</td>";
+                        echo "<td>
+                                <button type='button' class='btn btn-primary'data-bs-target='#alterar{$valor['senha']}'>
+                                    <i class='bi bi-pencil-square'></i> 
+                                </button> 
+                                <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#excluir'>
+                                    <i class='bi bi-trash'></i> 
+                                </button>
+                                </td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="alterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <?php } else {
+            echo 'Sem dados';
+        } ?>
 
     </div>
 

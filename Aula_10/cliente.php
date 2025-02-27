@@ -32,7 +32,15 @@ if (isset($_POST["salvar"])) {
 //verificar se acionou o botão consultar
 
 if (isset($_POST["consultar"])) {
+    //incluir a classe consultar
 
+    include_once("clienteClass.php");
+    $objCliente = new ClienteClass();
+
+    $nome = htmlspecialchars($_POST["nome_cliente"]);
+    $cpf = htmlspecialchars($_POST["cpf_cliente"]);
+
+    $objCliente ->consultar_cliente($nome , $cpf);
 }
 
 
