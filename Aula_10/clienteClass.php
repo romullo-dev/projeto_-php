@@ -417,4 +417,30 @@ class ClienteClass
           
     }
 
+    public function alterar_cliente($nome, $email,$descricao){ 
+        $this->setNomeCliente($nome);
+        $this->setEmailCliente($email);
+        $this->setDescricao($descricao);  
+        
+        //conecta com o banco de dados
+        $resultado =true;
+
+        //
+        if ($resultado == true) {
+            //mensagem
+            $_SESSION['mensagem'] = "Cliente alterado com sucesso!";
+            $_SESSION['mostrar_mensagem'] = 'SIM';
+            header('Location: consultar.php');
+        } else {
+            $_SESSION['mensagem'] = "Erro ao alterar cliente!";
+            $_SESSION['mostrar_mensagem'] = 'SIM';
+            header('Location: consultar.php');
+        }
+    }
+
+    
+
+    
+
 }
+

@@ -84,7 +84,7 @@ $acessar->controlarSessao();
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="dataNasc_cliente" class="form-label">Data Nascimento</label>
-                        <input type="date" class="form-control" name="dataNasc_cliente" id="dataNasc_cliente">
+                        <input type="date" class="form-control"  name="dataNasc_cliente" id="dataNasc_cliente">
                     </div>
                 </div>
             </div>
