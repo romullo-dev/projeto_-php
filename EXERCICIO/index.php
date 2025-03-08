@@ -17,10 +17,10 @@
         <nav class="navbar navbar-expand navbar-light bg-light">
             <ul class="nav navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="form.php">Pessoal fisica<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="formCPF.php">Pessoal fisica<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Pessoal juridica</a>
+                    <a class="nav-link" href="formCNPJ.php">Pessoal juridica</a>
                 </li>
 
             </ul>
@@ -40,6 +40,7 @@
         </div>
     </main>
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -54,3 +55,5 @@
 </body>
 
 </html>
+
+
