@@ -16,21 +16,46 @@
 
     <div class="container-fluid">
         <br>
-        <form method="post" action="">
+        <form method="post" action="index.php">
             <div class="row">
                 <div class="col-6">
                     <div class="mb-3">
-                        <label for="nome_cliente" class="form-label">Nome</label>
-                        <input type="text" name="nome_autor" class="form-control" id="nome_cliente" placeholder="Digite o nome completo...">
+                        <label for="nome_autor" class="form-label">nome do autor</label>
+                        <input type="text" name="nome_autor" class="form-control" id="nome_cliente" placeholder="Digite o nome do autor">
                     </div>
                 </div>
                 <div>
-                <button type="submit" name="consultar" class="btn btn-primary"><i class="bi bi-search"></i> Consultar</button>
+                <button type="submit" name="consultar_autor" class="btn btn-primary"><i class="bi bi-search"></i> Consultar</button>
         </form>
         <br>
         <hr>
     </div>
 
+    <div class="containerfluid">
+        <br>
+        <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col">id</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Ação</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($resultado as $key =>$valor){
+                print'<tr>';
+                print'  <th scope="row">1</th>'.$valor->id_autor.'</dh> ';
+                print'  <td>Mark</td>';
+                print'  <td>Otto</td>';
+                
+                print'</tr>';
+
+            }   
+            ?>
+            
+        </table>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

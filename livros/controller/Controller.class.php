@@ -1,4 +1,4 @@
-<?php
+ <?php
 //classe de controle
 class Controller
 {
@@ -37,7 +37,7 @@ class Controller
             $this->mostrarMensagem("Login ou senha inválidos!");
         }
     }
-
+    //inserir autor
     public function inserir_autor($nome_autor)
     {
         //instanciar a classe Autor
@@ -58,6 +58,33 @@ class Controller
             //inserir menu
             $menu = $this->menu();
             //incluir a view
+            include_once 'view/consultar.php';
+            //mostrar mensagem
+            $this->mostrarMensagem("Erro ao inserir autor!");
+        }
+    }
+    //consultar autor
+    public function consultar_autor($nome_autor)
+    {
+        //instanciar a classe Autor
+        $objAutor = new Autor();
+        //invocar o método
+        if ($objAutor->consultarAutor($nome_autor) == true) {
+            //iniciar sessao
+            session_start();
+            //inserir menu
+            $menu = $this->menu();
+            //incluir a view
+            include_once 'view/consultar.php';
+            //mostrar mensagem
+            $this->mostrarMensagem("Erro ao consultar!");
+        } else {
+            //iniciar sessao
+            session_start();
+            //inserir menu
+            $menu = $this->menu();
+            //incluir a view
+            $resultado = $objAutor->consultarAutor($nome_autor);
             include_once 'view/consultar.php';
             //mostrar mensagem
             $this->mostrarMensagem("Erro ao inserir autor!");
