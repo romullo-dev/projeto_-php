@@ -2,7 +2,9 @@
 
 include_once("conexao.php");
 
-
+if (isset( $POST["login"]) || $POST["senha"] ==     v) {
+    echo"Deu bom ";
+}
 
 
 
