@@ -2,8 +2,36 @@
 
 include_once("conexao.php");
 
-if (isset( $POST["login"]) || $POST["senha"] ==     v) {
-    echo"Deu bom ";
+if (isset( $_POST["login"])|| isset($_POST["senha"])) {
+    if (strlen($_POST["login"]) == 0){
+        echo "Por favor, digite um email";
+    } else if (strlen($_POST["senha"]) == 0) {
+        echo "Por favor, digite uma senha";
+    } else {
+        $login = $sql->real_escape_string ( $_POST["login"]); 
+        $senha = $sql->real_escape_string ( $_POST["senha"]); 
+
+        $sqlCode = "SELECT * FROM usuario WHERE email = '$login' AND senha = '$senha'";
+        $sql_query =  $sql->query($sqlCode ) or die ("Falha na conexão do codigo SQL: " . $mysqli->error);
+
+        $quantidade = $sql_query->num_rows;
+
+        if ($quantidade == 1 ) {
+            $usuario = $sql_query->fetch_assoc();
+            if (!isset($_SESSION )){
+                session_start();
+            }
+
+            $_SESSION['id'] = $usuario ['id'];
+            $_SESSION['nome'] = $usuario ['nome'];
+
+            header('Location: home.php');
+            exit;
+        } else {
+            echo 'Falha ao logar!';
+        }
+
+    }
 }
 
 
@@ -49,7 +77,7 @@ if (isset( $POST["login"]) || $POST["senha"] ==     v) {
 
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">Entrar</button>
-                            <button type="submit" class="btn btn-secondary">Cadastrar</button>
+                            <!--<button type="submit" class="btn btn-secondary">Cadastrar</button>  -->
                         </div>
                     </form>
                 </div>
