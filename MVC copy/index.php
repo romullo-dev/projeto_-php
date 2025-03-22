@@ -1,3 +1,0 @@
-<!--Rotas/ Chamada de metodos-->
-
-
